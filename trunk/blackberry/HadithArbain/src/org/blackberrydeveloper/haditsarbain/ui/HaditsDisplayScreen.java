@@ -45,9 +45,11 @@ import net.rim.device.api.ui.DrawStyle;
 import net.rim.device.api.ui.Font;
 import net.rim.device.api.ui.Graphics;
 import net.rim.device.api.ui.Manager;
+import net.rim.device.api.ui.MenuItem;
 import net.rim.device.api.ui.TransitionContext;
 import net.rim.device.api.ui.UiApplication;
 import net.rim.device.api.ui.UiEngineInstance;
+import net.rim.device.api.ui.component.Dialog;
 import net.rim.device.api.ui.component.TextField;
 import net.rim.device.api.ui.container.MainScreen;
 import net.rim.device.api.ui.container.VerticalFieldManager;
@@ -72,7 +74,7 @@ public class HaditsDisplayScreen extends MainScreen {
 		
 		initialize();
 		this.addKeyListener(new KeyEventListener());
-		
+		this.addMenuItem(menuAbout);
 		// start thread
 		new Thread(){
 			public void run(){
@@ -80,6 +82,12 @@ public class HaditsDisplayScreen extends MainScreen {
 			}
 		}.start();
 	}
+	
+	private MenuItem menuAbout = new MenuItem("About", 10,100){
+		public void run(){
+			Dialog.inform("Hadith Arbain 1.0\nDeveloped By Hakim (hakimrie@gmail.com)");
+		}
+	};
 	
 	/**
 	 * initialize attributes
